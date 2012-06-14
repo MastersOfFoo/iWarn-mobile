@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.44"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Select_State"
+            android:textAppearance="?android:attr/textAppearanceLarge" android:padding="20sp"/>
+
+        <Spinner
+            android:id="@+id/spinner_state"
+            android:layout_width="match_parent"
+            android:layout_height="80sp"
+            android:layout_marginTop="30sp"
+            android:entries="@array/s_states" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="150sp">
+
+            <Button
+                android:id="@+id/btn_back_to_event"
+                style="@style/ButtonText_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/red_button"
+                android:text="@string/back_event" />
+
+            <Button
+                android:id="@+id/btn_update_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:text="@string/txt_update"
+                style="@style/ButtonText_2"
+				android:background="@drawable/red_button" 
+              
+              />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

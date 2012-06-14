@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="aplication.start.main"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk android:minSdkVersion="10" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    
+    
+
+    <application
+        android:icon="@drawable/logo"
+       
+        android:label="@string/app_name" >
+<uses-library android:name="com.google.android.maps" />
+<classpathentry exported="true" kind="lib" path="libs/gson-2.1.jar"/> 
+       
+        <activity
+            android:name=".Management_Menu"            
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="mngt_activity.ManagementLicense_Plate"
+            android:label="@string/app_name" > 
+        
+            
+            
+        </activity>
+        
+        
+         <activity
+            android:name="mngt_activity.ManagementID_Person"
+            android:label="@string/app_name" > 
+        
+            
+            
+        </activity>
+        
+          <activity
+            android:name="mngt_activity.ManagementDescriptionType"
+            android:label="@string/app_name" > 
+        
+            
+            
+        </activity>
+         
+         
+        
+          <activity
+android:name="mngt_activity.ManagementsAndroidMapas"
+            android:label="@string/app_name" > 
+        
+            
+            
+        </activity>
+
+          <activity
+android:name="mngt_activity.Management_ShowEvents"
+            android:label="@string/app_name" > 
+        
+            
+            
+        </activity>          
+
+          
+        <activity
+            android:name="mngt_activity.Management_Information_Event"
+            android:label="@string/app_name" > 
+        
+            
+            
+        </activity>
+        
+        
+        <activity
+            android:name="mngt_activity.Management_Confirm_Informacion"
+            android:label="@string/app_name" > 
+        
+            
+            
+        </activity>
+          
+         <activity
+            android:name="mngt_activity.Management_Edit_State"
+            android:label="@string/app_name" > 
+        
+            
+            
+        </activity>
+        
+          
+          
+          <activity
+            android:name=".result_view"
+            android:label="@string/app_name" > 
+        
+            
+            
+        </activity>          
+          
+          
+        
+        
+    </application>
+
+</manifest>

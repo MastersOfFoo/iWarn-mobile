@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <com.google.android.maps.MapView
+        android:id="@+id/mapa"
+        android:layout_width="fill_parent"
+        android:layout_height="428dp"
+        android:layout_weight="2.45"
+        android:apiKey="0L4UG-WlEV3PMrcLhNqNIxL_N1G_512-blNlFpA"
+        android:clickable="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <Button
+            android:id="@+id/bnt_back_LL"
+            style="@style/ButtonText_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/red_button"
+            android:text="@string/back_txt" />
+
+        <Button
+            android:id="@+id/bnt_next_LL"
+            style="@style/ButtonText_2"
+            android:layout_width="79dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="38dp"
+            android:background="@drawable/red_button"
+            android:text="@string/next_txt" />
+
+</RelativeLayout>
+
+</LinearLayout>

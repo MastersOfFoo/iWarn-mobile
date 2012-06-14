@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/IDPerson"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <EditText
+        android:id="@+id/id_person_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btn_add_IP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_txt" 
+        style="@style/ButtonText_2"
+		android:background="@drawable/red_button"
+        />
+
+    <ListView
+        android:id="@+id/List_id"
+        android:layout_width="match_parent"
+        android:layout_height="309dp"
+        android:clickable="false" >
+
+        <!-- Preview: listitem=@android:layout/simple_list_item_1 -->
+    </ListView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <Button
+            android:id="@+id/btn_next_IP"
+            style="@style/ButtonText_2"
+            android:layout_width="79dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/red_button"
+            android:text="@string/next_txt" />
+
+        <Button
+            android:id="@+id/btn_back_IP"
+            style="@style/ButtonText_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="14dp"
+            android:background="@drawable/red_button"
+            android:text="@string/back_txt" />
+
+    </RelativeLayout>
+
+</LinearLayout>

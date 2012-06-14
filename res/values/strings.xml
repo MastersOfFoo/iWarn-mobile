@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, IWarn_androidActivity!</string>
+    <string name="app_name">IWarn</string>
+	<string-array name="s_accidents">
+        <item>simple</item>
+        <item>multiple</item>
+        <item>runover</item>        	   	    
+	</string-array>
+	
+	
+		<string-array name="s_states">
+        <item>registered</item>
+        <item>attended</item>
+        <item>closed</item>        	   	    
+	</string-array>
+	
+	
+	<string name="btn_aceptar">Obtener</string>
+	<string name="Description">Description</string>
+	<string name="License_Plate">License Plate</string>
+	<string name="add_txt">Add</string>
+	<string name="IDPerson">ID Person</string>
+	<string name="type">Type</string>
+	<string name="latitud_txt">Latitude: </string>
+	<string name="longitud_txt">Longitude: </string>
+	<string name="add_event_txt">ADD Event</string>
+	<string name="next_txt">Next</string>
+	<string name="back_txt">Back</string>
+	<string name="New_Event_txt">New Event</string>
+	<string name="View_Event_txt">View Events</string>
+	<string name="back_main_txt">Back to Main Menu</string>
+	<string name="status_txt">Status</string>
+	<string name="Back_events_txt">Back to Events View</string>
+	<string name="position_events_txt">Map</string>
+	<string name="send_event_txt">Send</string>
+	<string name="confirm_title_txt">Confirm information</string>
+	<string name="txt_exit">Exit</string>
+	
+	
+<style name="ButtonText">
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textColor">#ffffff</item>
+    <item name="android:gravity">center</item>
+    <item name="android:layout_margin">3dp</item>
+    <item name="android:textSize">30dp</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:shadowColor">#000000</item>
+    <item name="android:shadowDx">1</item>
+    <item name="android:shadowDy">1</item>
+    <item name="android:shadowRadius">2</item>
+</style>
+
+
+<style name="ButtonText_2">
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textColor">#ffffff</item>
+    <item name="android:gravity">center</item>
+    <item name="android:layout_margin">3dp</item>
+    <item name="android:textSize">15dp</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:shadowColor">#000000</item>
+    <item name="android:shadowDx">1</item>
+    <item name="android:shadowDy">1</item>
+    <item name="android:shadowRadius">2</item>
+</style>
+    <string name="Event_result">STATUS OF YOUR EVENT</string>
+    <string name="Select_State">SELECT THR STATE FOR THE EVENT</string>
+    <string name="txt_update">Update</string>
+    <string name="back_event">Back to the Event</string>
+
+
+
+</resources>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="right"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:padding="5sp">
+
+        <TextView
+            android:id="@+id/showing_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Small Text"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list_show_events"
+        android:layout_width="match_parent"
+        android:layout_height="338dp" android:padding="10sp">
+
+    </ListView>
+
+
+
+    		<RelativeLayout
+    		    android:layout_width="match_parent"
+    		    android:layout_height="wrap_content" >
+
+    		    <Button
+    		        android:id="@+id/btn_back_event"    		        
+    		        android:layout_width="wrap_content"
+    		        android:layout_height="wrap_content"
+    		        android:layout_alignParentLeft="true"
+    		        android:layout_alignParentTop="true"
+    		        android:layout_marginLeft="34dp"
+    		        android:text="@string/back_txt" android:height="50sp" android:width="90sp"
+    		        style="@style/ButtonText_2"
+					android:background="@drawable/red_button"
+    		    />
+
+    		    <Button
+    		        android:id="@+id/btn_next_event"    		        
+    		        android:layout_width="wrap_content"
+    		        android:layout_height="wrap_content"
+    		        android:layout_alignParentRight="true"
+    		        android:layout_alignParentTop="true"
+    		        android:layout_marginRight="44dp"
+    		        android:text="@string/next_txt" android:height="50sp" android:width="90sp"
+    		        style="@style/ButtonText_2"
+					android:background="@drawable/red_button"
+    		     />
+
+    		</RelativeLayout>
+
+    		<LinearLayout
+    	
+    		    android:layout_width="match_parent"
+    		    android:layout_height="wrap_content" android:paddingTop="20sp" android:paddingLeft="5sp">
+
+    		    <Button
+    		        android:id="@+id/btn_events_back_main"
+    		        android:layout_width="wrap_content"
+    		        android:layout_height="wrap_content"
+    		        android:text="@string/back_main_txt"
+    		        style="@style/ButtonText_2"
+					android:background="@drawable/red_button"
+    		    />
+
+    		</LinearLayout>
+
+</LinearLayout>
