@@ -4,8 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
- 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
@@ -19,7 +17,7 @@
             android:layout_marginTop="24dp"
             android:text="Large Text"
             android:textAppearance="?android:attr/textAppearanceLarge" />
-
+
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
@@ -40,7 +38,10 @@
             android:ems="10"
             android:height="120sp"
             android:inputType="textMultiLine"
-            android:width="190sp" />
+            android:width="190sp" >
+
+            <requestFocus />
+        </EditText>
 
         <TextView
             android:id="@+id/textView2"
@@ -50,7 +51,7 @@
             android:layout_centerVertical="true"
             android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-
+
         <TextView
             android:id="@+id/TextView01"
             android:layout_width="wrap_content"
@@ -59,7 +60,7 @@
             android:layout_alignTop="@+id/editText1"
             android:text="@string/Description"
             android:textAppearance="?android:attr/textAppearanceSmall" />
-
+
         <TextView
             android:id="@+id/TextView02"
             android:layout_width="wrap_content"
@@ -68,41 +69,48 @@
             android:layout_alignTop="@+id/textView2"
             android:text="@string/status_txt"
             android:textAppearance="?android:attr/textAppearanceSmall" />
-
+
         <Button
             android:id="@+id/button1"
+            style="@style/ButtonText_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/TextView02"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="17dp"
-            android:text="@string/Back_events_txt"
-            style="@style/ButtonText_2"
-			android:background="@drawable/red_button" 
-          
-          />
-
-            <com.google.android.maps.MapView
-                android:id="@+id/map_small"
-                android:layout_width="180sp"
-                android:layout_height="100sp"
-                android:layout_alignLeft="@+id/textView2"
-                android:layout_below="@+id/textView2"
-                android:layout_marginTop="28dp"
-                android:apiKey="0L4UG-WlEV3PMrcLhNqNIxL_N1G_512-blNlFpA"
-                android:clickable="true" >
+            android:background="@drawable/red_button"
+            android:text="@string/Back_events_txt" />
 
-            </com.google.android.maps.MapView>
+        <com.google.android.maps.MapView
+            android:id="@+id/map_small"
+            android:layout_width="180sp"
+            android:layout_height="100sp"
+            android:layout_alignLeft="@+id/textView2"
+            android:layout_below="@+id/textView2"
+            android:layout_marginTop="28dp"
+            android:apiKey="0L4UG-WlEV3PMrcLhNqNIxL_N1G_512-blNlFpA"
+            android:clickable="true" >
+        </com.google.android.maps.MapView>
 
-            <TextView
-                android:id="@+id/TextView03"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignRight="@+id/textView3"
-                android:layout_alignTop="@+id/map_small"
-                android:text="@string/position_events_txt"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+        <TextView
+            android:id="@+id/TextView03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/textView3"
+            android:layout_alignTop="@+id/map_small"
+            android:text="@string/position_events_txt"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/button1"
+            android:layout_alignRight="@+id/map_small"
+            android:text="@string/to_photos"
+            android:background="@drawable/red_button"
+            style="@style/ButtonText_2" 
+        />
     </RelativeLayout>
 
 </LinearLayout>

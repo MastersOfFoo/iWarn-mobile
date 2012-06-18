@@ -2,23 +2,34 @@ package connections;
 
 
 
+
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.io.Reader;
+import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Bitmap.CompressFormat;
 import android.net.ParseException;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import org.apache.http.Header;
 import org.apache.http.HeaderElement;
@@ -34,13 +45,20 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.ByteArrayBody;
+import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHttpResponse;
 import org.apache.http.message.BasicNameValuePair;
 
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
+import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HTTP;
+import org.apache.http.protocol.HttpContext;
 import org.apache.http.NameValuePair;
 
 
@@ -51,7 +69,7 @@ import org.apache.http.NameValuePair;
 public class Connection {
 
 	String URL = "http://iwarn-staging.herokuapp.com/";
-	//String URL = "http://192.168.0.17:9292/";
+	//String URL = "http://192.168.0.21:9292/";
 	
 	
 	public String result = "";
@@ -129,7 +147,22 @@ public class Connection {
 		Log.i(tag, result);
     } // end callWebService()
     
-    
+
+    public void callWebServiceForGetAllPhotosOfevent( String id_event){
+    	HttpClient httpclient = new DefaultHttpClient();
+		HttpGet request = new HttpGet(URL+"events/"+id_event+"/photos.json");
+		request.addHeader("deviceId", deviceId);
+		ResponseHandler<String> handler = new BasicResponseHandler();
+		try {
+			result = httpclient.execute(request, handler);
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		httpclient.getConnectionManager().shutdown();
+		Log.i(tag, result);
+    } // end callWebService()
     
     
     
@@ -201,9 +234,9 @@ public class Connection {
         try {
             //result = httpclient.execute(sender, handler);
             HttpResponse response = httpclient.execute(sender);
-            //HttpEntity entity = response.getEntity();
-            //InputStream is = entity.getContent();
-            //result=convertStreamToString(is);
+            HttpEntity entity = response.getEntity();
+            InputStream is = entity.getContent();
+            result=convertStreamToString(is);
         } catch (ClientProtocolException e) {
             e.printStackTrace();
             result = e.toString();
@@ -414,7 +447,61 @@ return charset;
 }
 
 
+public void executeMultipartPost(Bitmap bm,String id,String name) throws Exception {
+	try {
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		bm.compress(CompressFormat.JPEG, 75, bos);
+		byte[] data = bos.toByteArray();
+		HttpClient httpClient = new DefaultHttpClient();
+		HttpPost postRequest = new HttpPost(URL+"events/"+id+"/photos.json");
+		ByteArrayBody bab = new ByteArrayBody(data, name);
+		// File file= new File("/mnt/sdcard/forest.png");
+		// FileBody bin = new FileBody(file);
+		MultipartEntity reqEntity = new MultipartEntity(
+		HttpMultipartMode.BROWSER_COMPATIBLE);
+		reqEntity.addPart("uploaded", bab);
+		reqEntity.addPart("photoCaption", new StringBody("sfsdfsdf"));
+		postRequest.setEntity(reqEntity);
+		HttpResponse response = httpClient.execute(postRequest);
+		HttpEntity entity = response.getEntity();
+		
+		BufferedReader reader = new BufferedReader(new InputStreamReader(
+				response.getEntity().getContent(), "UTF-8"));
+		String sResponse;
+		StringBuilder s = new StringBuilder();
 
+		/*while ((sResponse = reader.readLine()) != null) {
+			s = s.append(sResponse);
+		}*/
+		//System.out.println("Response: " + s);
+		result="todo salio bien";
+	} catch (Exception e) {
+		// handle exception here
+		result="execute :"+e.toString();
+		Log.e(e.getClass().getName(), e.getMessage());
+		
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        e.printStackTrace(pw);
+        //result="e: "+sw.toString();
+	}
+}
+
+
+public void LoadImageFromUrl(String imageUrl, ImageView i){
+	
+	try {
+		  //ImageView i = (ImageView)findViewById(R.id.image);
+		  Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(imageUrl).getContent());
+		  i.setImageBitmap(bitmap); 
+		} catch (MalformedURLException e) {
+		  e.printStackTrace();
+		} catch (IOException e) {
+		  e.printStackTrace();
+		}
+	
+	
+}
 
 
 }

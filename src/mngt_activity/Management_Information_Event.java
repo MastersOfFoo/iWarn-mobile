@@ -98,7 +98,18 @@ public class Management_Information_Event extends MapActivity{
       		}
       		
       	});
-        
+      	//photos button
+        Button b2=(Button) findViewById(R.id.button2);        
+      	b2.setOnClickListener(new View.OnClickListener(){
+      		public void onClick(View view){
+      		 
+      		Intent intent1=new Intent();
+			intent1.setClass(view.getContext(),Management_Select_Image.class);    			       	
+		    startActivity(intent1);	
+		    Management_Select_Image.id=id;
+      		}
+      		
+      	});
         
         
         

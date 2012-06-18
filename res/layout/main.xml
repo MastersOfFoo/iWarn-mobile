@@ -23,8 +23,13 @@
         android:layout_width="wrap_content"
         android:layout_height="103dp"
         android:text="@string/btn_aceptar" />
-
-    <Spinner
+
+    <ImageView
+        android:id="@+id/iv1"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:src="@drawable/background" />
+    <Spinner
         android:id="@+id/spinner1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

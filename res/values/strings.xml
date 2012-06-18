@@ -71,6 +71,15 @@
     <string name="Select_State">SELECT THR STATE FOR THE EVENT</string>
     <string name="txt_update">Update</string>
     <string name="back_event">Back to the Event</string>
+    <string name="add_image">Add Image</string>
+    <string name="advice_foto">Your Photos</string>
+    <string name="press">Press the Button to add a new Photo</string>
+    <string name="to_photos">Photos</string>
+    <string name="back_to_event">Back to the Event</string>
+    <string name="Back_add_image">Back to Add Photo</string>
+    <string name="Load_image">Load Picture</string>
+    <string name="tct_Send_Image">Send Image</string>
+    <string name="Back_to_image_state">Back to photo  menu</string>
 
 
 

@@ -96,6 +96,34 @@ android:name="mngt_activity.Management_ShowEvents"
             
         </activity>
         
+         
+                  <activity
+            android:name="mngt_activity.Management_View_Image"
+            android:label="@string/app_name" > 
+        
+            
+            
+        </activity>
+        
+                  
+                 <activity
+            android:name="mngt_activity.Management_Select_Image"
+            android:label="@string/app_name" > 
+        
+            
+            
+        </activity>
+        
+                 
+                 
+           <activity
+            android:name="mngt_activity.Management_Advise_Send_Image"
+            android:label="@string/app_name" > 
+        
+            
+            
+        </activity>                  
+        
           
           
           <activity
