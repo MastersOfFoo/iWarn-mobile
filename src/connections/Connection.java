@@ -70,8 +70,9 @@ public class Connection {
 
 	String URL = "http://iwarn-staging.herokuapp.com/";
 	//String URL = "http://192.168.0.21:9292/";
+	//String URL = "http://186.144.180.32:9292/";
 	
-	
+	public Bitmap ima;
 	public String result = "";
 	String deviceId = "xxxxx" ;
 	final String tag = "Your Logcat tag: ";
@@ -164,53 +165,23 @@ public class Connection {
 		Log.i(tag, result);
     } // end callWebService()
     
-    
-    
-    
-    /*
-    
-    public void callWebServiceForSendData(String jsonData){
-    	HttpClient httpclient = new DefaultHttpClient();
-    	HttpPost sender= new HttpPost(URL+"events.json");
-    	
-		//HttpGet request = new HttpGet(URL + q);
-		
-		HttpParams p=new BasicHttpParams();
-		//p.setParameter("Method:", "POST");
-	//	p.setParameter("Accept:"," application/json");
-	//	p.setParameter("Content-Type:", "application/json");
-	//	 //Body: {"event": {"description": null, "latitude": 70.1, "longitude": 11.0, "state": "registered", "type": "simple"}}
-	//	p.setParameter("Body:",jsonData);
-		
-	//	sender.setParams(p);
-		
-		sender.addHeader("deviceId", deviceId);
 
-		sender.addHeader("Method:", "POST");
-		sender.addHeader("Accept:"," application/json");
-		sender.addHeader("Content-Type:", "application/json");
-		 //Body: {"event": {"description": null, "latitude": 70.1, "longitude": 11.0, "state": "registered", "type": "simple"}}
-		sender.addHeader("Body:",jsonData);
-		
+    public void callWebServiceForGetAllServices(){
+    	HttpClient httpclient = new DefaultHttpClient();
+		HttpGet request = new HttpGet(URL+"/services.json");
+		request.addHeader("deviceId", deviceId);
 		ResponseHandler<String> handler = new BasicResponseHandler();
-		
-		
 		try {
-			//result = httpclient.execute(sender, handler);
-			HttpResponse responset = httpclient.execute(sender);
-			
+			result = httpclient.execute(request, handler);
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
-			result=e.toString();
-			
 		} catch (IOException e) {
 			e.printStackTrace();
-			result=e.toString();
 		}
 		httpclient.getConnectionManager().shutdown();
 		Log.i(tag, result);
     } // end callWebService()
-*/
+
     
     
     public void callWebServiceForSendData(String jsonData){
@@ -447,7 +418,7 @@ return charset;
 }
 
 
-public void executeMultipartPost(Bitmap bm,String id,String name) throws Exception {
+public void callWeServiceForSendImage(Bitmap bm,String id,String name) throws Exception {
 	try {
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
 		bm.compress(CompressFormat.JPEG, 75, bos);
@@ -492,8 +463,9 @@ public void LoadImageFromUrl(String imageUrl, ImageView i){
 	
 	try {
 		  //ImageView i = (ImageView)findViewById(R.id.image);
-		  Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(imageUrl).getContent());
-		  i.setImageBitmap(bitmap); 
+		  Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(imageUrl).getContent());		  
+		  i.setImageBitmap(bitmap);
+		  ima=bitmap;
 		} catch (MalformedURLException e) {
 		  e.printStackTrace();
 		} catch (IOException e) {
@@ -502,6 +474,113 @@ public void LoadImageFromUrl(String imageUrl, ImageView i){
 	
 	
 }
+
+
+public void callWebServiceForSendIdPerson(String id,String jsonData){
+    HttpClient httpclient = new DefaultHttpClient();
+    HttpPost sender = new HttpPost(URL+"events/"+id+"/people.json");
+//events/1/vehicles.json
+    sender.addHeader("Accept"," application/json");
+    sender.addHeader("Content-Type", "application/json");
+    //Body: {"event": {"description": null, "latitude": 70.1, "longitude": 11.0, "state": "registered", "type": "simple"}}
+
+    sender.addHeader("deviceId", deviceId);
+    try {
+		sender.setEntity(new StringEntity(jsonData));
+	} catch (UnsupportedEncodingException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+    //ResponseHandler<String> handler = new BasicResponseHandler();
+
+
+    try {
+        //result = httpclient.execute(sender, handler);
+        HttpResponse response = httpclient.execute(sender);
+        HttpEntity entity = response.getEntity();
+        InputStream is = entity.getContent();
+        result=convertStreamToString(is);
+    } catch (ClientProtocolException e) {
+        e.printStackTrace();
+        result = e.toString();
+    } catch (IOException e) {
+        e.printStackTrace();
+        result = e.toString();
+    }
+    httpclient.getConnectionManager().shutdown();
+    Log.i(tag, result);
+ } // 
+
+public void callWebServiceForSendVehicles(String id,String jsonData){
+    HttpClient httpclient = new DefaultHttpClient();
+    HttpPost sender = new HttpPost(URL+"events/"+id+"/vehicles.json");
+//events/1/vehicles.json
+    sender.addHeader("Accept"," application/json");
+    sender.addHeader("Content-Type", "application/json");
+    //Body: {"event": {"description": null, "latitude": 70.1, "longitude": 11.0, "state": "registered", "type": "simple"}}
+
+    sender.addHeader("deviceId", deviceId);
+    try {
+		sender.setEntity(new StringEntity(jsonData));
+	} catch (UnsupportedEncodingException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+    //ResponseHandler<String> handler = new BasicResponseHandler();
+
+
+    try {
+        //result = httpclient.execute(sender, handler);
+        HttpResponse response = httpclient.execute(sender);
+        HttpEntity entity = response.getEntity();
+        InputStream is = entity.getContent();
+        result=convertStreamToString(is);
+    } catch (ClientProtocolException e) {
+        e.printStackTrace();
+        result = e.toString();
+    } catch (IOException e) {
+        e.printStackTrace();
+        result = e.toString();
+    }
+    httpclient.getConnectionManager().shutdown();
+    Log.i(tag, result);
+ } // 
+
+public void callWebServiceForSendService(String id,String jsonData){
+    HttpClient httpclient = new DefaultHttpClient();
+    HttpPost sender = new HttpPost(URL+"events/"+id+"/alerts.json");
+    // POST /events/:id/alerts.json
+    sender.addHeader("Accept"," application/json");
+    sender.addHeader("Content-Type", "application/json");
+    //Body: {"event": {"description": null, "latitude": 70.1, "longitude": 11.0, "state": "registered", "type": "simple"}}
+
+    sender.addHeader("deviceId", deviceId);
+    try {
+		sender.setEntity(new StringEntity(jsonData));
+	} catch (UnsupportedEncodingException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+    //ResponseHandler<String> handler = new BasicResponseHandler();
+
+
+    try {
+        //result = httpclient.execute(sender, handler);
+        HttpResponse response = httpclient.execute(sender);
+        HttpEntity entity = response.getEntity();
+        InputStream is = entity.getContent();
+        result=convertStreamToString(is);
+    } catch (ClientProtocolException e) {
+        e.printStackTrace();
+        result = e.toString();
+    } catch (IOException e) {
+        e.printStackTrace();
+        result = e.toString();
+    }
+    httpclient.getConnectionManager().shutdown();
+    Log.i(tag, result);
+ } // 
+
 
 
 }

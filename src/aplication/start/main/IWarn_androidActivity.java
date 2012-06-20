@@ -9,18 +9,19 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 import objects.Event;
+import objects.People;
 import objects.Photo;
+import objects.Service;
+import objects.Vehicle;
 
 
 
 
-import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.javax.xml.stream.Constants;
-import com.amazonaws.services.s3.AmazonS3Client;
-import com.amazonaws.services.s3.model.PutObjectRequest;
+
 import com.google.android.maps.MapView;
 import com.google.gson.Gson;
 
@@ -30,6 +31,7 @@ import connections.Connection;
 import location.MyLocationListener;
 import lu.thinds.android.RestService;
 import mngt_activity.ManagementDescriptionType;
+import mngt_activity.Management_Select_Service;
 import mngt_activity.Management_ShowEvents;
 import mngt_activity.Management_View_Image;
 import mngt_activity.ManagementsAndroidMapas;
@@ -163,10 +165,10 @@ public class IWarn_androidActivity extends Activity {
     		public void onClick(View view){
     			try {
     				
-    	//			Gson gs=new Gson();
+    				//Gson gs=new Gson();
     				  
     //				  String[] placas = {"abc", "def", "ghi"};
-    //				  //WebService sv=new WebService("");
+    //				
     				  t_query2 = (TextView) findViewById(R.id.editText1);
     				  //t_query2.setText(name);
     				  //String g=t_query2.getText().toString();
@@ -217,33 +219,73 @@ public class IWarn_androidActivity extends Activity {
     				  
     				  //iv_prueba
     				  
-    				/*  Gson gs=new Gson();
-    					Connection a=new Connection();
-    					a.callWebServiceForGetAllPhotosOfevent("1");
-    					Photo obj[] = gs.fromJson(a.result,  Photo[].class);
+
+    					//a.callWebServiceForGetAllPhotosOfevent("1");
+    					//Photo obj[] = gs.fromJson(a.result,  Photo[].class);
+    					
+    					/*ArrayList <String>c=new ArrayList<String>();
+    					c.add("id1");
+    					c.add("id2");
+    					c.add("id3");
+    					
+    					String plate=gs.toJson(c);
+    					//String [] st = c.toArray(new String[c.size()]);
+    			    	//String plate= Arrays.deepToString(st);
+    					
+    					String x="{\"vehicles\":"+plate+"}";*/
+    					
+    					
+    					//a.callWebServiceForSendVehicles("1",x);
+    		    		
+    		    		//Vehicle pe[] = gs.fromJson(a.result,  Vehicle[].class);
+    					
+    				//	t_query1.setText(a.result);
+    		    		/*if(pe!=null && pe.length >0){
+    		    			t_query2.setText("all Ok");	
+    		    		}*/
+    					
+    					
+    				//	t_query1.setText(a.result);
+      				  		Gson gs=new Gson();
+      						Connection a=new Connection();
+      						a.callWebServiceForGetAllServices();    					
+    					
+    					   Service obj[] = gs.fromJson(a.result,  Service[].class);
+    					   
+    					   Management_Select_Service.servicesList=obj;
+    					   
+    					   
+
+    					   
+    					
+    					   //t_query1.setText(""+obj[0].name+obj[1].name);
+    					   
+    					//a.callWebServiceForSendIdPerson(1,x);
     				  // a.callWebServiceForUpadateState("4",k);
     			  	
     				  //a.callWebServiceForSendData(x);    				  
-    				  obj[0].url;
+    				
     		          //t_query1.setText(obj[0].url);
-    		          */
+    		        
     					
-    		          ImageView iv=(ImageView) findViewById(R.id.iv1);
+    		          //ImageView iv=(ImageView) findViewById(R.id.iv1);
 
     		          //downloadFile(obj[0].url,iv);
-    		          LoadImageFromUrl("http://iwarn-photos.s3.amazonaws.com/2012-05-17%2013.48.25.jpg.jpg",iv);
+    		          //LoadImageFromUrl("http://iwarn-photos.s3.amazonaws.com/2012-05-17%2013.48.25.jpg.jpg",iv);
     		          
     				
     				   
     				   
-    				   
+    					   Intent intent=new Intent();
+    					   intent.setClass(view.getContext(),Management_Select_Service.class);
+    					   startActivity(intent);
     				   
     				/*   Event obj[] = gs.fromJson(a.result,  Event[].class);
     				   
     				   Management_ShowEvents.setData(obj);
     				   Management_ShowEvents.updateDateOfAllData();
-    				 	Intent intent=new Intent();
-    				 	intent.setClass(view.getContext(),Management_ShowEvents.class);    			       	
+    				 	
+    				 	    			       	
     			      	startActivity(intent);
 				*/
     				   

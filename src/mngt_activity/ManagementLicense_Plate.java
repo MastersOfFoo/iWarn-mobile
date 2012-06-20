@@ -3,14 +3,21 @@ package mngt_activity;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import objects.Event;
+
+import com.google.gson.Gson;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 import aplication.start.main.R;
 import aplication.start.main.result_view;
 import aplication.start.main.R.id;
@@ -108,14 +115,37 @@ public class ManagementLicense_Plate extends Activity{
 		      			
 		      			}
 		      		});
+		      	
+		      	
+		      	mainListView = (ListView) findViewById( R.id.List_plates );
+		    	mainListView.setOnItemClickListener(new OnItemClickListener() {
+		            @Override
+		            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+		            	
+		            	//rb_id
+		            	CheckBox ch = (CheckBox) findViewById( R.id.cb_plates );
+		            	if(ch.isChecked()==true)
+		            	plates.remove(position);
+		           	 mainListView = (ListView) findViewById( R.id.List_plates );
+	      			 
+	      			  listAdapter = new ArrayAdapter<String>(v.getContext(),R.layout.simplerow, plates);
+	      			mainListView.setAdapter( listAdapter ); 
+		            	
+		                //tv1.setText("Población de "+ lv1.getItemAtPosition(posicion) + " es "+ habitantes[posicion]);
+		            }
+		        });
+		      	
+
+		
+		      	
+		      	
 		      		
 		      	}
 
     public static String getPlates(){
     	
-    	String [] st = plates.toArray(new String[plates.size()]);
-    	String x= Arrays.deepToString(st);
-    	
+    	Gson gs=new Gson();
+    	String x=gs.toJson(plates);    	
     	return x;
     }    
 

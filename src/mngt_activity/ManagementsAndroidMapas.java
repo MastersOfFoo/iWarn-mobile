@@ -41,7 +41,7 @@ public class ManagementsAndroidMapas extends MapActivity {
         MapView mapView = (MapView) findViewById(R.id.mapa);
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, 
-       locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0,
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0,
     	 
 
     		   

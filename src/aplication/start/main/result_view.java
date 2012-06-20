@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import objects.Event;
+import objects.People;
+import objects.Vehicle;
 
 
 
@@ -17,6 +19,7 @@ import location.MyLocationListener;
 import mngt_activity.ManagementDescriptionType;
 import mngt_activity.ManagementID_Person;
 import mngt_activity.ManagementLicense_Plate;
+import mngt_activity.Management_Select_Service;
 import mngt_activity.Management_ShowEvents;
 import android.app.Activity;
 import android.content.Intent;
@@ -27,6 +30,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class result_view extends Activity{
 	Connection a;
@@ -86,16 +90,87 @@ public class result_view extends Activity{
     	a=new Connection();
     	
     	a.callWebServiceForSendData(x);
+    	
+    	
+    	String res="Your event was  not sent ";
+    	Event ob=null;;
+		try{
+		 ob = gs.fromJson(a.result,  Event.class);
+		}catch(Exception E){
+			
+		
+		}
+    	
     	//show.setText(description+"\n"+latitude+"\n"+longitude+"\n"+type+"\n"+id+"\n"+plate);
     	
     	//EditText show=(EditText) findViewById(R.id.result_box);
     	//show.setText(a.result);
     	
-    	String isOK[]=a.result.split(":");
-    	String res="Your event was  not sent ";
-    	if(isOK[0].equals("{\"id\"")){
-    		 res="Your event was  successfully sent ";
+    	//String isOK[]=a.result.split(":");
+    	    	    	    	    	
+
+    	//if(isOK[0].equals("{\"id\"")){
+    	
+    	if(ob!=null){
+    		boolean swfail=false;	
+    		
+    		if(ManagementID_Person.ids.size()>0){
+    		x="{\"people\":"+id +"}";
+    		
+    		
+    		
+    		
+    		try{
+    		a.callWebServiceForSendIdPerson(ob.id,x);
+    		People pe[] = gs.fromJson(a.result,  People[].class);
+	    		if(pe!=null && pe.length >0 ){
+	    			res="Your event was  successfully sent ";
+	    		}
+    		}catch(Exception ex){
+    			swfail=true;
+    			
+    		}
+    		
+    		
+    		
+    		
     	}
+    	if(ManagementLicense_Plate.plates.size()>0 && swfail==false){
+    				
+    		
+    			x="{\"vehicles\":"+plate+"}";	
+    			
+    			try{
+    			a.callWebServiceForSendVehicles(ob.id,x);
+        		
+        		Vehicle ve[] = gs.fromJson(a.result,  Vehicle[].class);
+    			
+    			if(ve!=null && ve.length >0){    				
+    			res="Your event was  successfully sent ";    			    			
+    			
+    			}}
+    			catch(Exception ex){
+    				swfail=true;
+    			}
+    		
+    		
+    	}
+    			
+    	if(swfail==false){
+    		Button btnaux = (Button) findViewById(R.id.btn_send_alert);
+			Management_Select_Service.eventId=ob.id;
+			btnaux.setClickable(true);
+			res="Your event was  successfully sent ";
+    	}
+    	else{
+    		res="Your event was  not sent ";
+    	}	
+    		 
+    		 
+    	}
+    	
+    	
+    	
     	TextView tshow=(TextView) findViewById(R.id.result_text);
     	tshow.setText(res);
     	//result_text
@@ -107,13 +182,11 @@ public class result_view extends Activity{
 		  Button btn2 = (Button) findViewById(R.id.btn_finish);
 	      	btn2.setOnClickListener(new View.OnClickListener(){
 	      		public void onClick(View view){
-	      			
-	      			
+	      				      			
 	      			ManagementDescriptionType.clear();
 	      			ManagementLicense_Plate.clear();
 	      			MyLocationListener.clear();
-	      			
-	      			
+	      				      			
 	      	        ManagementID_Person.clear();
 	      	        ManagementLicense_Plate.clear();
 	      	        finish();
@@ -122,6 +195,27 @@ public class result_view extends Activity{
 	      			}
 	      		});
     	
+	      	
+	      	//btn_send_alert
+	      	
+	      	Button btn3 = (Button) findViewById(R.id.btn_send_alert);
+	      	btn3.setOnClickListener(new View.OnClickListener(){
+	      		public void onClick(View view){
+	      				      			
+	      			ManagementDescriptionType.clear();
+	      			ManagementLicense_Plate.clear();
+	      			MyLocationListener.clear();
+	      				      			
+	      	        ManagementID_Person.clear();
+	      	        ManagementLicense_Plate.clear();
+	      	        finish();
+	      	      Intent intent=new Intent();
+				   intent.setClass(view.getContext(),Management_Select_Service.class);
+				   startActivity(intent);
+	      			 	      			
+	      			}
+	      		});
+
     	
     	
     }

@@ -4,8 +4,10 @@ import location.MyLocationListener;
 import mngt_activity.ManagementDescriptionType;
 import mngt_activity.ManagementID_Person;
 import mngt_activity.ManagementLicense_Plate;
+import mngt_activity.Management_Select_Service;
 import mngt_activity.Management_ShowEvents;
 import objects.Event;
+import objects.Service;
 
 import com.google.gson.Gson;
 
@@ -31,6 +33,22 @@ public class Management_Menu extends Activity {
         //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //RelativeLayout ly = (RelativeLayout) findViewById(R.id.ly_main);
         //ly.setBackgroundColor(Color.DKGRAY);
+	        // politicas para permitir conexion  a servidor		      	        
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+	    StrictMode.setThreadPolicy(policy); 
+        
+        
+		Gson gs=new Gson();
+			Connection a=new Connection();
+			a.callWebServiceForGetAllServices();    					
+	
+	   Service obj[] = gs.fromJson(a.result,  Service[].class);
+	   
+	   Management_Select_Service.servicesList=obj;
+
+        
                 
         
 		  Button btn = (Button) findViewById(R.id.btn_new_event);

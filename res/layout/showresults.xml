@@ -25,15 +25,44 @@
             android:textAppearance="?android:attr/textAppearanceMedium" android:paddingTop="100sp" android:paddingLeft="40sp"/>
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_finish"
-        android:layout_width="101dp"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.00"
-        android:text="@string/back_main_txt"
-     	android:background="@drawable/red_button"
-     	style="@style/ButtonText_2"   
-      />
+        android:layout_weight="0.03" >
+
+        <Button
+            android:id="@+id/btn_finish"
+            style="@style/ButtonText_2"
+            android:layout_width="101dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.00"
+            android:background="@drawable/red_button"
+            android:text="@string/back_main_txt"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.00" >
+
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:gravity="right" >
+
+                <Button
+                    android:id="@+id/btn_send_alert"
+                    style="@style/ButtonText_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.00"
+                    android:background="@drawable/red_button"
+                    android:clickable="false"
+                    android:text="@string/send_alert" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

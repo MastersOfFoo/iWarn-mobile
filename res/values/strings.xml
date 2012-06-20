@@ -80,6 +80,11 @@
     <string name="Load_image">Load Picture</string>
     <string name="tct_Send_Image">Send Image</string>
     <string name="Back_to_image_state">Back to photo  menu</string>
+    <string name="Select_Service">Select the service needy</string>
+    <string name="type_message">"Type your Message "</string>
+    <string name="destination">Touch de destineation of the alert</string>
+    <string name="send_alert">Send Alert</string>
+    <string name="txt_Radio_delete">Delete element</string>
 
 
 

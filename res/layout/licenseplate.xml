@@ -20,14 +20,25 @@
         <requestFocus />
     </EditText>
 
-    <Button
-        android:id="@+id/btn_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/add_txt" 
-        style="@style/ButtonText_2"
-		android:background="@drawable/red_button"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/btn_add"
+            style="@style/ButtonText_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/red_button"
+            android:text="@string/add_txt" />
+
+        <CheckBox
+            android:id="@+id/cb_plates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_Radio_delete" android:layout_marginLeft="50dp"/>
+
+    </LinearLayout>
 
     <ListView
         android:id="@+id/List_plates"
